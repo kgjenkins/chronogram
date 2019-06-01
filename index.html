@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Chronogram calculator</title>
+<style>
+#total { font-size:200% }
+</style>
+</head>
+<body>
+<h1>Chronogram calculator</h1>
+<p>The rule of the chronogram is that when all letters corresponding to
+Roman numerals (c, d, i, l, m, v, and x) are added together, they produce
+a sum equivalent to a specific year of the Christian calendar.</p>
+<textarea id='text' rows='20' cols='80'></textarea>
+<div>Chronogram = <span id='total'>0</span></div>
+<script>
+function calc(e) {
+  var text = e.target.value;
+  var total = 0;
+  for (var i=0; i<text.length; i++) {
+    var letter = text.charAt(i).toUpperCase();
+    switch (letter) {
+      case 'I':
+        total += 1;
+        break;
+      case 'V':
+        total += 5;
+        break;
+      case 'X':
+        total += 10;
+        break;
+      case 'L':
+        total += 50;
+        break;
+      case 'C':
+        total += 100;
+        break;
+      case 'D':
+        total += 500;
+        break;
+      case 'M':
+        total += 1000;
+        break;
+      default:
+        break;
+    }
+  }
+  document.getElementById('total').innerHTML = total.toString();
+}
+document.getElementById('text').onkeyup = calc;
+</script>
+</body>
+</html>
